@@ -94,7 +94,16 @@ public class QuizActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                if(index <= questions.size()) {
+                    index++;
+                    setNextQuestion();
+                } else {
+                    Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
+                    intent.putExtra("correct", correctAnswers);
+                    intent.putExtra("total", questions.size());
+                    startActivity(intent);
+                    //Toast.makeText(this, "Quiz Finished.", Toast.LENGTH_SHORT).show();
+                }
             }
         };
     }
