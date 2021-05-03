@@ -181,7 +181,35 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    public void onClose(View view) {
+        QuizActivity.this.finish();
+    }
 
+    public void on50(View view) {
+        TextView opt [] = {  binding.option1,   binding.option2,   binding.option3,   binding.option4};
+        Boolean correct = false;
+        Boolean ans1 = false;
+        Boolean ans2 = false;
+
+       for (int i = 0; i < opt.length; i++) {
+           if (opt[i].getText().toString().equals(question.getAnswer())) {
+               correct = true;
+               opt[i].setBackground(getResources().getDrawable(R.drawable.option_unselected));
+           } else {
+               if (!ans1) {
+                   opt[i].setBackground(getResources().getDrawable(R.drawable.option_wrong));
+                   ans1 = true;
+               } else {
+                    if (!ans2) {
+                        opt[i].setBackground(getResources().getDrawable(R.drawable.option_wrong));
+                        ans2 = true;
+                    } else {
+                        opt[i].setBackground(getResources().getDrawable(R.drawable.option_unselected));
+                    }
+               }
+           }
+       }
+    }
 
 
 }
